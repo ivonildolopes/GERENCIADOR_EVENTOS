@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml">
+	<ui:define name="content">
+
+		<h:form id="formListUsuario">
+			<center>
+				<h:outputLabel value="Quadro de Horario"
+					styleClass="label label-pill label-primary"
+					style="font-size:30px;
+			 text-align: center" />
+			</center>
+			<p:separator />
+			<br />
+			<!-- MESSAGES -->
+			<h:panelGrid>
+				<p:messages id="messages" showDetail="true" autoUpdate="true"
+					closable="true" />
+			</h:panelGrid>
+
+			<!-- PAINEL DE FILTRO  -->
+			<h:panelGrid columns="10" styleClass="panelgrid"
+				style="font-size:10px">
+				<center>
+					<!-- CAMPO NOME -->
+					<h:outputLabel id="nomeLb" value=" Nome Evento: "
+						style="font-size:13px; font-family:Courier " />
+
+					<h:inputText id="nomeTx" value="#{listEvento.nome}"
+						style="width:130px" styleClass="form-control" />
+
+					<!-- CAMPO DIA DA SEMANA -->
+					<h:outputLabel id="diaSemanaLb" value="  Dia Semana: "
+						style="font-size:13px; font-family:Courier" />
+
+					<h:selectOneMenu value="#{listEvento.diaSemana}" id="diaSemanaTx"
+						style="width:130px" styleClass="form-control">
+						<f:selectItem noSelectionOption="Selecione um Dia" itemValue="" />
+						<f:selectItem itemLabel="DOMINGO" itemValue="DOMINGO" />
+						<f:selectItem itemLabel="SEGUNDA" itemValue="SEGUNDA" />
+						<f:selectItem itemLabel="TERÇA" itemValue="TERCA" />
+						<f:selectItem itemLabel="QUARTA" itemValue="QUARTA" />
+						<f:selectItem itemLabel="QUINTA" itemValue="QUINTA" />
+						<f:selectItem itemLabel="SEXTA" itemValue="SEXTA" />
+						<f:selectItem itemLabel="SABADO" itemValue="SABADO" />
+					</h:selectOneMenu>
+
+					<!-- CAMPO TURNO -->
+					<h:outputLabel id="turnoLb" value=" Turno: "
+						style="font-size:13px; font-family:Courier " />
+
+
+					<h:selectOneMenu value="#{listEvento.turno}" id="turnoTx"
+						style="width:130px" styleClass="form-control">
+						<f:selectItem noSelectionOption="Selecione um Dia" itemValue="" />
+						<f:selectItem itemLabel="MANHÃ" itemValue="MANHA" />
+						<f:selectItem itemLabel="TARDE" itemValue="TARDE" />
+						<f:selectItem itemLabel="NOITE" itemValue="NOITE" />
+
+					</h:selectOneMenu>
+
+
+					<h:commandButton value="Listar" styleClass="btn btn-info;"
+						actionListener="#{listEvento.lista()}" update="@form"
+						style="padding-left:14px;" />
+
+				</center>
+			</h:panelGrid>
+			<br />
+
+			<!-- INSERIRIR NOVO  -->
+			<h:panelGrid columns="1" styleClass="panelgrid">
+				<p:commandButton value="Incluir +" styleClass="btn btn-success"
+					rendered="#{login.existsLogin==true}"
+					action="#{cadEvento.preparaSalvar}" ajax="false" />
+			</h:panelGrid>
+			<br />
+			<p:separator />
+			<!-- TABELA DE EVENTO -->
+			<p:dataTable id="tbEvento" var="evento" value="#{listEvento.eventos}"
+				style="font-size:10px" rendered="#{listEvento.eventos != null}"
+				emptyMessage="Nenhum resultado encontrado." resizableColumns="true"
+				rows="10" paginator="true"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5,10,15">
+
+
+				<p:column headerText="Dia Semana">
+					<h:outputText value="#{evento.diaSemana}" />
+				</p:column>
+
+				<p:column headerText="Curso">
+					<h:outputText value="#{evento.curso}" />
+				</p:column>
+
+				<p:column headerText="Disciplina" col-md="4">
+					<h:outputText value="#{evento.nome}" />
+				</p:column>
+
+				<p:column headerText="Sala">
+					<h:outputText value="#{evento.espaco}" />
+				</p:column>
+
+				<p:column headerText="Turno" col-md="4">
+					<h:outputText value="#{evento.turno}" />
+				</p:column>
+
+				<p:column headerText="Professor">
+					<h:outputText value="#{evento.responsavel}" />
+				</p:column>
+				<p:column headerText="Ativo" style="text-align: center">
+					<h:outputText value="#{evento.temAula == true? 'OK' : 'NAO'}" />
+				</p:column>
+
+				<p:column id="clExcluir" resizable="false" headerText="Ações"
+					rendered="#{login.existsLogin==true}">
+
+					<p:commandButton icon="ui-icon-pencil" ajax="false"
+						title="Atualizar"
+						action="#{atualizaEvento.preperaAtualizar(evento)}" />
+
+
+					<p:commandButton id="btExcluir" icon="ui-icon-closethick"
+						title="Excluir" actionListener="#{listEvento.excluir(evento)}"
+						update="tbEvento"
+						onclick="if (!confirm('Confirma exclusão do evento?')) return false" />
+
+				</p:column>
+			</p:dataTable>
+
+			<center>
+				<!-- Link para fazer Login -->
+				<ul class="nav nav-pills">
+
+					<li><p:commandLink value="Fazer Login - Caso seja Funcionario"
+							style="font-size:9px" rendered="#{login.existsLogin==false}"
+							action="/pages/login/login?faces-redirect=true" /></li>
+				</ul>
+			</center>
+		</h:form>
+	</ui:define>
+</ui:composition>

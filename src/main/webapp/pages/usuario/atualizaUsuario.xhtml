@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml">
+	<ui:define name="content">
+
+		<h:form id="formAtualizaUsuario">
+			<center>
+			<h:outputLabel value="Altera Usuario" 
+			styleClass="label label-pill label-primary" style="font-size:30px;
+			 text-align: center"/>
+			 </center>
+			<p:separator />
+			<br />
+			<h:panelGrid id="gridUser" columns="4" styleClass="panelgrid">
+				
+				<p:outputLabel value="Nome: " />
+				<font color="red">*</font>
+				<p:inputText id="nome" value="#{atualizaUsuario.usuarioSelecionado.nome}" required="true"
+					requiredMessage="Campo Obrigatório" />
+				<p:message for="nome" />
+
+				<p:outputLabel value="Login: " />
+				<font color="red">*</font>
+				<p:inputText id="login" value="#{atualizaUsuario.usuarioSelecionado.login}" required="true"
+					requiredMessage="Campo Obrigatório" />
+				<p:message for="login" />
+				
+				<p:outputLabel value="Ativo: " />
+				<font color="red">*</font>
+				<p:selectBooleanButton id="ativo" value="#{atualizaUsuario.usuarioSelecionado.ativo}" onLabel="Sim" offLabel="Não" style="width:60px" />
+				<p:message for="ativo" />
+				
+
+				<p:outputLabel value="Senha: " />
+				<font color="red">*</font>
+				<p:password id="senha" value="#{atualizaUsuario.usuarioSelecionado.senha}" required="true"
+					requiredMessage="Campo Obrigatório" feedback="true"
+					promptLabel="Insira uma senha" weakLabel="Fraco" goodLabel="Bom"
+					strongLabel="Forte" />
+				<p:message for="senha" />
+				
+			</h:panelGrid>
+			
+			<br />
+			<!-- PAINEL DE BOTOES -->
+			<h:panelGrid columns="3" styleClass="panelgrid">
+				 
+				<p:commandButton value="Voltar"
+					action="#{listUsuario.preparaListar}" ajax="false"
+					immediate="true" styleClass="btn btn-warn"/>
+				 
+				 	
+				<p:commandButton value="Atualizar" action="#{atualizaUsuario.atualizar}"
+					ajax="false" styleClass="btn btn-primary" />
+				<p:commandButton value="Limpar"
+					actionListener="#{atualizaUsuario.limparDados}" update="@form"
+					type="reset" styleClass="btn btn-danger"/>
+			</h:panelGrid>
+			
+		</h:form>
+		
+	</ui:define>
+</ui:composition>

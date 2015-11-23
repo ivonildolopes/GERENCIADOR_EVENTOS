@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml">
+	<ui:define name="content">
+
+		<h:form id="formListUsuario">
+			<h2>Listagem de Usuários</h2>
+			<p:separator />
+			<br />
+			<!-- MESSAGES -->
+			<h:panelGrid>
+				<p:messages id="messages" showDetail="true" autoUpdate="true"
+					closable="true" />
+			</h:panelGrid>
+			
+			<!-- PAINEL LISTAR POR NOME  -->
+			<h:panelGrid columns="3" styleClass="panelgrid">
+				<p:outputLabel id="nomeLb" value="Nome: " />
+				<p:inputText id="nomeTx" value="#{listUsuario.nome}" />
+				<p:commandButton value="Listar" styleClass="btn btn-info"
+					actionListener="#{listUsuario.lista}" update="@form" />
+			</h:panelGrid>
+			<br />
+			
+			<!-- INSERIRIR NOVO  -->
+			<h:panelGrid columns="1" styleClass="panelgrid">
+				<p:commandButton value="Incluir +" styleClass="btn btn-success"
+					action="#{cadUsuario.preparaSalvar}" ajax="false" />
+			</h:panelGrid>
+			<br />
+			<p:dataTable id="tbUsuarios" var="usuario"
+				style="font-size:10px"
+				value="#{listUsuario.usuarios}"
+				rendered="#{listUsuario.usuarios != null}"
+				emptyMessage="Nenhum resultado encontrado." resizableColumns="true"
+				rows="10" paginator="true"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="5,10,15">
+
+				<p:column headerText="Nome">
+					<h:outputText value="#{usuario.nome}" />
+				</p:column>
+				<p:column headerText="Login">
+					<h:outputText value="#{usuario.login}" />
+				</p:column>
+				<p:column headerText="Ativo" style="text-align: center">
+					<h:outputText value="#{usuario.ativo}" />
+				</p:column>
+
+				<!-- BOTAO ATUALIZAR AÇÕES -->
+				<p:column style="text-align:center" resizable="false"
+					headerText="Ações">
+					
+					<p:commandButton icon="ui-icon-pencil" ajax="false"
+						title="Atualizar"
+						action="#{atualizaUsuario.preparaAtualizar(usuario)}" />
+					
+					<p:commandButton id="btExcluir" icon="ui-icon-closethick"
+						title="Excluir" actionListener="#{listUsuario.excluir(usuario)}"
+						update="tbUsuarios"
+						onclick="if (!confirm('Confirma exclusão do usuário?')) return false" />	
+						
+						
+				</p:column>
+					
+					
+			
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>

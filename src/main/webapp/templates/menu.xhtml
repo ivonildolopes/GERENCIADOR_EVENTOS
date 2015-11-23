@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:view>
+	<h:form>
+		<h:panelGroup id="sidebar" layout="block">
+			<center><h1>Menu</h1></center>
+			<h:outputLabel value="#{login.usuario.nome}"/>
+			<br />
+
+
+			<p:panelMenu style="width:150px; height: 30px">
+				<p:submenu label="MENU ALUNO">
+					<p:menuitem value="Quadro de Horarios"
+						action="/pages/evento/listEvento?faces-redirect=true"
+						icon="ui-icon-disk" />
+				</p:submenu>
+
+				<p:submenu label="MENU FUNCIONARIO"
+					rendered="#{login.existsLogin==true}">
+					<p:menuitem value="Sair" action="#{login.logout()}"
+						icon="ui-icon-disk" />
+					<p:menuitem value="Criar Evento"
+						action="/pages/evento/cadEvento?faces-redirect=true"
+						icon="ui-icon-disk" />
+					<p:menuitem value="Criar Usuario"
+						action="/pages/usuario/cadUsuario?faces-redirect=true"
+						icon="ui-icon-disk" />
+					<p:menuitem value="Listar Usuarios"
+						action="/pages/usuario/listUsuario?faces-redirect=true"
+						icon="ui-icon-disk" />
+				</p:submenu>
+
+			</p:panelMenu>
+
+
+
+		</h:panelGroup>
+	</h:form>
+</f:view>
+</html>
