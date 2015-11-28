@@ -13,6 +13,7 @@ import br.edu.fanor.progweb.arquitetura.aspectj.RolesAllowed;
 import br.edu.fanor.progweb.arquitetura.dao.UsuarioDAO;
 import br.edu.fanor.progweb.arquitetura.entity.Usuarios;
 import br.edu.fanor.progweb.arquitetura.exceptions.DAOException;
+import br.edu.fanor.progweb.arquitetura.utils.MessagesUtils;
 
 /**
  * @author patrick.cunha
@@ -27,9 +28,16 @@ public class UsuarioBO {
 
 	@RolesAllowed(value = { "INCLUIR_USUARIO" })
 	public void salvar(Usuarios usuario) {
-		usuario.setAtivo(false);
-		//usuario.setPrimeiroAcesso(true);
-		usuarioDAO.salvar(usuario);
+		
+
+			if(usuario.getLogin().length() >=4){
+				usuario.setAtivo(true);
+				usuarioDAO.salvar(usuario);
+				MessagesUtils.info("Usuário salvo com sucesso!");	
+			}else{
+				MessagesUtils.error("Login deve conter no minino 4 caracteres");
+				
+			}
 	}
 
 	@RolesAllowed(value = { "ALTERAR_USUARIO" })

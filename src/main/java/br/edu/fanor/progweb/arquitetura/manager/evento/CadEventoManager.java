@@ -50,12 +50,12 @@ public class CadEventoManager {
 		evento.setUsuarios(usuario);
 
 		eventoBO.salvar(evento);
-		MessagesUtils.info("Evento salvo com sucesso");
+		
 		listEvent.lista();
 
 	//	return Navigation.SUCESSO;
 		limpaDados();
-		return "cadEvento?faces-redirect=true";
+		return "cadEvento";//?faces-redirect=true";
 	}
 
 	public void limpaDados() {

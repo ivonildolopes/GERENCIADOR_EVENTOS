@@ -9,22 +9,21 @@
 <f:view>
 	<h:form>
 		<h:panelGroup id="sidebar" layout="block">
-			<center><h1>Menu</h1></center>
+			
 			<h:outputLabel value="#{login.usuario.nome}"/>
 			<br />
 
-
-			<p:panelMenu style="width:150px; height: 30px">
-				<p:submenu label="MENU ALUNO">
-					<p:menuitem value="Quadro de Horarios"
-						action="/pages/evento/listEvento?faces-redirect=true"
-						icon="ui-icon-disk" />
-				</p:submenu>
-
-				<p:submenu label="MENU FUNCIONARIO"
+			<center> <h:outputLabel value="Menu"/> </center>
+			<h:outputLabel value="Somente para Funcionarios" rendered="#{login.existsLogin==false}" />
+			<p:panelMenu style="width:197px; height: 30px" rendered="#{login.existsLogin==true}">
+				
+				<p:submenu label="FUNCIONARIO"
 					rendered="#{login.existsLogin==true}">
 					<p:menuitem value="Sair" action="#{login.logout()}"
 						icon="ui-icon-disk" />
+					<p:menuitem value="Listar Eventos"
+						action="/pages/evento/listEvento?faces-redirect=true"
+						icon="ui-icon-disk" />	
 					<p:menuitem value="Criar Evento"
 						action="/pages/evento/cadEvento?faces-redirect=true"
 						icon="ui-icon-disk" />

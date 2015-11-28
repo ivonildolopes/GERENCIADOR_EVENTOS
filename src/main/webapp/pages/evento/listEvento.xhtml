@@ -30,7 +30,7 @@
 						style="font-size:13px; font-family:Courier " />
 
 					<h:inputText id="nomeTx" value="#{listEvento.nome}"
-						style="width:130px" styleClass="form-control" />
+						style="width:130px" styleClass="form-control letraGrande" />
 
 					<!-- CAMPO DIA DA SEMANA -->
 					<h:outputLabel id="diaSemanaLb" value="  Dia Semana: "
@@ -88,7 +88,8 @@
 				rowsPerPageTemplate="5,10,15">
 
 
-				<p:column headerText="Dia Semana">
+				<p:column headerText="Dia Semana"
+				styleClass="colunaDia">
 					<h:outputText value="#{evento.diaSemana}" />
 				</p:column>
 
@@ -100,18 +101,22 @@
 					<h:outputText value="#{evento.nome}" />
 				</p:column>
 
-				<p:column headerText="Sala">
+				<p:column headerText="Espaco"
+				styleClass="colunaEspaco">
 					<h:outputText value="#{evento.espaco}" />
 				</p:column>
 
-				<p:column headerText="Turno" col-md="4">
+				<p:column headerText="Turno" col-md="4"
+				styleClass="colunaTurno">
 					<h:outputText value="#{evento.turno}" />
 				</p:column>
 
-				<p:column headerText="Professor">
+				<p:column headerText="Professor"
+				styleClass="colunaProfessor">
 					<h:outputText value="#{evento.responsavel}" />
 				</p:column>
-				<p:column headerText="Ativo" style="text-align: center">
+				<p:column headerText="Ativo" style="text-align: center"
+				styleClass="colunaAtivo">
 					<h:outputText value="#{evento.temAula == true? 'OK' : 'NAO'}" />
 				</p:column>
 

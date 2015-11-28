@@ -4,16 +4,11 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml">
-	
-	<style type="text/css">
-		maiuscula {
-  		text-transform: uppercase;
-		}
-	</style>
-		
+			
 	<ui:define name="content">
 
 		<h:form id="formCadEvento">
+			
 			<f:validateBean>
 				<center>				
 				<p:outputLabel value="Cadastro de Evento"/>
@@ -21,25 +16,28 @@
 				<p:separator />
 				<br />
 				<h:panelGrid>
+					
 					<p:messages id="messages" showDetail="true" autoUpdate="true"
-						closable="true" />
+						closable="true"/>						
+							
 				</h:panelGrid>
 
 				<!-- DADOS -->
-				<h:panelGrid id="gridUser" columns="5" styleClass="panelgrid">
+				<h:panelGrid id="gridUser" columns="5" styleClass="panelgrid,letraGrande">
 
 					<!-- NOME -->
 					<p:outputLabel value="Nome: " />
 					<font color="red">*</font>
 					<p:inputText id="nome" value="#{cadEvento.nome}" required="true"
-						requiredMessage="Campo Obrigatório" style="text-transform:uppercase;"/>
+						requiredMessage="Campo Obrigatório" style="text-transform:uppercase; width:500px"/>
 					<p:message for="nome" />
 					
 					<!-- CURSO -->
 					<p:outputLabel value="Curso: " />
 					<font color="red">*</font>
 					<p:inputText id="curso" value="#{cadEvento.curso}" required="true"
-						requiredMessage="Campo Obrigatório" styleClass="maiuscula" type="text"/>
+						requiredMessage="Campo Obrigatório" style="width:500px" type="text" 
+						styleClass="letraGrande"/>
 					<p:message for="curso" />
 
 					<!-- DATA INICIAL -->
@@ -53,7 +51,8 @@
 					<!-- DATA FINAL -->
 					<p:outputLabel value="Data Final: " />
 					<font color="red">*</font>
-				<p:calendar id="dataFinal" value="#{cadEvento.dataFinal}" navigator="true" pattern="dd/MM/yyyy HH:mm:ss"> 
+				<p:calendar id="dataFinal" value="#{cadEvento.dataFinal}"
+				 navigator="true" pattern="dd/MM/yyyy HH:mm:ss" > 
 						<f:converter converterId="converterCalendar" />
 				</p:calendar>
 					<p:message for="dataFinal" />
@@ -62,7 +61,8 @@
 					<p:outputLabel value="Dia da Semana: " />
 					<font color="red">*</font>
 					<h:selectOneMenu value="#{cadEvento.diaSemana}" id="diaSemana" 
-					required="true" requiredMessage="Campo Obrigatório" styleClass="form-control">
+					required="true" requiredMessage="Campo Obrigatório" styleClass="form-control"
+					style="width:170px;">
 						<f:selectItem itemLabel="DOMINGO" itemValue="DOMINGO" />
 						<f:selectItem itemLabel="SEGUNDA" itemValue="SEGUNDA" />
 						<f:selectItem itemLabel="TERCA" itemValue="TERCA" />
@@ -76,7 +76,8 @@
 					<!-- PERIODICIDADE -->
 					<p:outputLabel value="Periodicidade: " />
 					<font color="red">*</font>
-					<h:selectOneMenu value="#{cadEvento.periodicidade}" id="periodo" styleClass="form-control">
+					<h:selectOneMenu value="#{cadEvento.periodicidade}" id="periodo" styleClass="form-control"
+					style="width:170px;">
 						<f:selectItem itemLabel="DIARIO" itemValue="DIARIO" />
 						<f:selectItem itemLabel="SEMANAL" itemValue="SEMANAL" />
 						<f:selectItem itemLabel="MENSAL" itemValue="MENSAL" />
@@ -91,19 +92,22 @@
 					<p:outputLabel value="Nome Responsavel: " />
 					<font color="red">*</font>
 					<p:inputText id="nomeResponsavel" value="#{cadEvento.responsavel}"
-						required="true" requiredMessage="Campo Obrigatório"/>
+						required="true" requiredMessage="Campo Obrigatório"
+						style="width:250px;" styleClass="letraGrande"/>
 					<p:message for="nomeResponsavel" />
 
 					<!-- LOCAL -->
 					<p:outputLabel value="Local: " />
 					<font color="red">*</font>
-					<p:inputText id="local" value="#{cadEvento.espaco}" />
+					<p:inputText id="local" value="#{cadEvento.espaco}"
+					style="width:200px;" styleClass="letraGrande" />
 					<p:message for="local" />
 
 					<!-- TURNO -->
 					<p:outputLabel value="Turno: " />
 					<font color="red">*</font>
-					<h:selectOneMenu value="#{cadEvento.turno}" id="turno" styleClass="form-control">
+					<h:selectOneMenu value="#{cadEvento.turno}" id="turno"
+					 styleClass="form-control" style="width:170px;">
 						<f:selectItem itemLabel="MANHÃ" itemValue="MANHA" />
 						<f:selectItem itemLabel="TARDE" itemValue="TARDE" />
 						<f:selectItem itemLabel="NOITE" itemValue="NOITE" />
@@ -131,6 +135,7 @@
 					<p:commandButton value="Limpar" styleClass="btn btn-danger"
 						actionListener="#{cadEvento.limpaDados}" update="@form"
 						type="reset" />
+						
 						
 				</h:panelGrid>
 			</f:validateBean>

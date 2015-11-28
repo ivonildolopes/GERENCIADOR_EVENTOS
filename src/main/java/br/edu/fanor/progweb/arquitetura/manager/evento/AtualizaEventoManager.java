@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 import br.edu.fanor.progweb.arquitetura.bussines.EventoBO;
 import br.edu.fanor.progweb.arquitetura.entity.Eventos;
 import br.edu.fanor.progweb.arquitetura.utils.MessagesUtils;
-import br.edu.fanor.progweb.arquitetura.utils.Navigation;
 
 @RequestScoped
 @ManagedBean(name = "atualizaEvento")
@@ -29,7 +28,7 @@ public class AtualizaEventoManager {
 			//MessagesUtils.error("Não foi possivel alterar o evento");
 		//}
 
-		return Navigation.SUCESSO;
+		return "listEvento?faces-redirect=true";
 	}
 	
 	public String preperaAtualizar(Eventos evento){

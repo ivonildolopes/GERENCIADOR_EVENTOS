@@ -64,7 +64,8 @@ public class UsuarioDAO {
 //			return null;
 //		}
 		
-		String jpql = "select u from Usuarios u where u.login = :login and u.senha = :senha";
+		String jpql = "select u from Usuarios u where"
+				+ " u.login = :login and u.senha = :senha and ativo = true";
 		Query query = entityManager.createQuery(jpql);
 		query.setParameter("login", login);
 		query.setParameter("senha", senha);

@@ -40,7 +40,7 @@ public class EventoDAO {
 				+ " where e.nome like :nome"
 				+ " and e.diaSemana like :diaSemana"
 				+ " and e.turno like :turno"
-				+ " and dataFinal >= CURRENT_TIMESTAMP";
+				+ " and dataFinal >= CURRENT_TIMESTAMP order by nome";
 		Query query = entityManager.createQuery(hql);
 		query.setParameter("nome","%"+nome+"%");
 		query.setParameter("diaSemana","%"+diaSemana+"%");
@@ -51,7 +51,9 @@ public class EventoDAO {
 	
 	@SuppressWarnings("unchecked")
 	public List<Eventos> listarPorNome(String nome, String diaSemana) {		
-		String hql = "select e from Eventos e where e.nome like :nome and e.diaSemana like :diaSemana";
+		String hql = "select e from Eventos e"
+				+ " where e.nome like :nome and"
+				+ " e.diaSemana like :diaSemana";
 		Query query = entityManager.createQuery(hql);
 		query.setParameter("nome","%"+nome+"%");
 		query.setParameter("diaSemana","%"+diaSemana+"%");
@@ -86,22 +88,23 @@ public class EventoDAO {
 		return entityManager.createQuery("from Eventos order by nome").getResultList();
 	}
 	
-	public Boolean buscaRepetido(Eventos evento){
+	public Eventos buscaRepetido(String turno,String sala,String diaSemana){
 		
-		String jpql= "select count(e) from Eventos e"
-				+ " where e.turno = :evento.turno and"
-				+ " e.sala = :evento.sala and"
-				+ " e.diaSemana = :evento.diaSemana";
+		String jpql= "select e from Eventos e"
+				+ " where e.turno = :turno and"
+				+ " e.espaco = :sala and"
+				+ " e.diaSemana = :diaSemana";
 		
 		Query query = entityManager.createQuery(jpql);
-		query.setParameter("turno", evento.getTurno());
-		query.setParameter("sala", evento.getEspaco());
-		query.setParameter("diaSemana", evento.getDiaSemana());
+		query.setParameter("turno", turno);
+		query.setParameter("sala", sala);
+		query.setParameter("diaSemana", diaSemana);
 		
-		if(query.getSingleResult().equals("0"))		
-			return true; // podera salvar
-		else
-			return false; // não podera salvar
+		try{
+			return (Eventos) query.getSingleResult();
+		}catch(NoResultException e){
+			return null;
+		}
 	}
 	
 }

@@ -16,7 +16,7 @@
 				<h:outputLabel value="Login:" styleClass="control-label" />
 				<p:inputText id="login" value="#{login.usuario.login}"
 					required="true" requiredMessage="Campo Obrigatório"
-					styleClass="input-medium" />
+					styleClass="input-medium letraGrande" />
 				<p:message for="login" />
 
 				<h:outputLabel value="Senha:" />
@@ -26,7 +26,7 @@
 
 				<p:commandButton value="Entrar" action="#{login.loggar}"
 					ajax="false" />
-				<p:commandLink value="Cadastrar-se" action="cadastro" ajax="false" immediate="true" />
+			<!--  	<p:commandLink value="Cadastrar-se" action="cadastro" ajax="false" immediate="true" /> -->
 				<p:outputLabel value=""/>
 			</h:panelGrid>
 		</h:form>

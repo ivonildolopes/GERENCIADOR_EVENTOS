@@ -13,6 +13,7 @@ import br.edu.fanor.progweb.arquitetura.aspectj.RolesAllowed;
 import br.edu.fanor.progweb.arquitetura.dao.EventoDAO;
 import br.edu.fanor.progweb.arquitetura.entity.Eventos;
 import br.edu.fanor.progweb.arquitetura.exceptions.DAOException;
+import br.edu.fanor.progweb.arquitetura.utils.MessagesUtils;
 
 @Loggable
 @Component
@@ -24,10 +25,25 @@ public class EventoBO {
 	@RolesAllowed(value = { "INCLUIR_EVENTO" })
 	public void salvar(Eventos evento) {
 	
-		//if(eventoDAO.buscaRepetido(evento) == 0)
+	
+		if(eventoDAO.buscaRepetido( evento.getTurno(),evento.getEspaco(), evento.getDiaSemana()) == null){
 			eventoDAO.salvar(evento);
-//		else
-//			MessagesUtils.info("A sala ja esta ocupada");
+			MessagesUtils.info("Evento salvo com sucesso");
+		}
+		else{
+			MessagesUtils.error("A sala ja esta ocupada");
+		}
+		
+//		try{
+//			if(eventoDAO.buscaRepetido( evento.getTurno(),evento.getEspaco(), evento.getDiaSemana()) == null){
+//				eventoDAO.salvar(evento);
+//				MessagesUtils.info("Evento salvo com sucesso");
+//			}else{
+//				MessagesUtils.error("A sala ja esta ocupada");
+//			}
+//		}catch(Exception e){
+//			MessagesUtils.error("A sala ja esta ocupada");
+//		}
 	}
 
 	@RolesAllowed(value = { "ALTERAR_EVENTO" })

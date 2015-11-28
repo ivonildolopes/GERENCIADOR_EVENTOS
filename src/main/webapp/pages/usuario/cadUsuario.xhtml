@@ -20,13 +20,13 @@
 					<p:outputLabel value="Nome: " />
 					<font color="red">*</font>
 					<p:inputText id="nome" value="#{cadUsuario.nome}" required="true"
-						requiredMessage="Campo Obrigatório" />
+						requiredMessage="Campo Obrigatório" styleClass="letraGrande"/>
 					<p:message for="nome" />
 
 					<p:outputLabel value="Login: " />
 					<font color="red">*</font>
 					<p:inputText id="login" value="#{cadUsuario.login}" required="true"
-						requiredMessage="Campo Obrigatório" />
+						requiredMessage="Campo Obrigatório" styleClass="letraGrande" />
 					<p:message for="login" />
 
 					<p:outputLabel value="Senha: " />
@@ -51,9 +51,9 @@
 					<p:commandButton value="Salvar" action="#{cadUsuario.salvar}"
 						ajax="false" styleClass="btn btn-primary"/>
 						
-					<p:commandButton value="Limpar"
+					<p:commandButton value="Limpar" styleClass="btn btn-danger"
 						actionListener="#{cadUsuario.limpaDados}" update="@form"
-						type="reset" styleClass="btn btn-danger"/>
+						type="reset"/>
 						
 				</h:panelGrid>
 			</f:validateBean>

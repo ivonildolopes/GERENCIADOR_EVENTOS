@@ -37,13 +37,16 @@ public class ListEventoManager {
 
 	public String preparaAtualizar(Eventos evento) {
 		System.out.println(evento.getNome());
+		limparDados();
 		return null;
 	}
 
 	public void limparDados() {
 		this.nome = "";
+		this.diaSemana = "";
+		this.turno = "";
 		
-		this.eventos = null;
+		//this.eventos = null;
 	}
 
 	public String preparaListar() {
