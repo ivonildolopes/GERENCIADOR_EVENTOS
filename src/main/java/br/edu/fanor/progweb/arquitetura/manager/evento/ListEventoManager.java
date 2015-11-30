@@ -28,6 +28,7 @@ public class ListEventoManager {
 
 	public void lista() {
 		eventos = eventoBO.listaEventoPorNome(nome,diaSemana,turno);
+		limparDados();
 	}
 
 	public void excluir(Eventos evento) {

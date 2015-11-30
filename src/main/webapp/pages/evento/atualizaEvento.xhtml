@@ -108,8 +108,9 @@
 					<!-- ATIVO -->
 					<p:outputLabel value="Ativo?: " />
 					<font color="red">*</font>
-					<p:selectBooleanCheckbox value="#{atualizaEvento.eventoSelecionado.temAula}" />
-					<p:message for="local" />
+					<p:selectBooleanButton id="ativo" onLabel="Sim" offLabel="Não"
+					value="#{atualizaEvento.eventoSelecionado.temAula}" />
+					<p:message for="ativo" />
 					
 					
 

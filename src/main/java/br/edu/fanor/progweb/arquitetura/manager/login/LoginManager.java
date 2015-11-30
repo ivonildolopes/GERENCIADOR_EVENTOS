@@ -17,8 +17,8 @@ import br.edu.fanor.progweb.arquitetura.utils.MessagesUtils;
 import br.edu.fanor.progweb.arquitetura.utils.Navigation;
 
 /**
- * @author patrick.cunha
- * @since 26/06/2015
+ * @author IVONILDO LOPES
+ * 
  */
 @RequestScoped
 @Component(value = "login")

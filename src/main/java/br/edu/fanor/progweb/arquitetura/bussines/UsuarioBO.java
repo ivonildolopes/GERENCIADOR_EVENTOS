@@ -13,6 +13,7 @@ import br.edu.fanor.progweb.arquitetura.aspectj.RolesAllowed;
 import br.edu.fanor.progweb.arquitetura.dao.UsuarioDAO;
 import br.edu.fanor.progweb.arquitetura.entity.Usuarios;
 import br.edu.fanor.progweb.arquitetura.exceptions.DAOException;
+import br.edu.fanor.progweb.arquitetura.manager.login.LoginManager;
 import br.edu.fanor.progweb.arquitetura.utils.MessagesUtils;
 
 /**

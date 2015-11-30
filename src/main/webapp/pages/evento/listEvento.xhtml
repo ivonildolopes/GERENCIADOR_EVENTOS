@@ -27,17 +27,17 @@
 				<center>
 					<!-- CAMPO NOME -->
 					<h:outputLabel id="nomeLb" value=" Nome Evento: "
-						style="font-size:13px; font-family:Courier " />
+						style="font-size:13px; font-family:Courier; margin-right:5px; " />
 
 					<h:inputText id="nomeTx" value="#{listEvento.nome}"
-						style="width:130px" styleClass="form-control letraGrande" />
+						style="width:130px; margin-right:5px;" styleClass="form-control letraGrande" />
 
 					<!-- CAMPO DIA DA SEMANA -->
 					<h:outputLabel id="diaSemanaLb" value="  Dia Semana: "
-						style="font-size:13px; font-family:Courier" />
+						style="font-size:13px; font-family:Courier; margin-right:5px; " />
 
 					<h:selectOneMenu value="#{listEvento.diaSemana}" id="diaSemanaTx"
-						style="width:130px" styleClass="form-control">
+						style="width:130px; margin-right:5px;" styleClass="form-control">
 						<f:selectItem noSelectionOption="Selecione um Dia" itemValue="" />
 						<f:selectItem itemLabel="DOMINGO" itemValue="DOMINGO" />
 						<f:selectItem itemLabel="SEGUNDA" itemValue="SEGUNDA" />
@@ -50,11 +50,11 @@
 
 					<!-- CAMPO TURNO -->
 					<h:outputLabel id="turnoLb" value=" Turno: "
-						style="font-size:13px; font-family:Courier " />
+						style="font-size:13px; font-family:Courier; margin-right:5px; " />
 
 
 					<h:selectOneMenu value="#{listEvento.turno}" id="turnoTx"
-						style="width:130px" styleClass="form-control">
+						style="width:130px; margin-right:5px;" styleClass="form-control">
 						<f:selectItem noSelectionOption="Selecione um Dia" itemValue="" />
 						<f:selectItem itemLabel="MANHÃ" itemValue="MANHA" />
 						<f:selectItem itemLabel="TARDE" itemValue="TARDE" />
@@ -83,7 +83,7 @@
 			<p:dataTable id="tbEvento" var="evento" value="#{listEvento.eventos}"
 				style="font-size:10px" rendered="#{listEvento.eventos != null}"
 				emptyMessage="Nenhum resultado encontrado." resizableColumns="true"
-				rows="10" paginator="true"
+				rows="5" paginator="true"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="5,10,15">
 
@@ -93,16 +93,16 @@
 					<h:outputText value="#{evento.diaSemana}" />
 				</p:column>
 
-				<p:column headerText="Curso">
+				<p:column headerText="Curso" styleClass="letraGrande">
 					<h:outputText value="#{evento.curso}" />
 				</p:column>
 
-				<p:column headerText="Disciplina" col-md="4">
+				<p:column headerText="Disciplina" col-md="4" styleClass="letraGrande">
 					<h:outputText value="#{evento.nome}" />
 				</p:column>
 
 				<p:column headerText="Espaco"
-				styleClass="colunaEspaco">
+				styleClass="colunaEspaco letraGrande">
 					<h:outputText value="#{evento.espaco}" />
 				</p:column>
 
@@ -112,7 +112,7 @@
 				</p:column>
 
 				<p:column headerText="Professor"
-				styleClass="colunaProfessor">
+				styleClass="colunaProfessor letraGrande">
 					<h:outputText value="#{evento.responsavel}" />
 				</p:column>
 				<p:column headerText="Ativo" style="text-align: center"
@@ -135,13 +135,21 @@
 
 				</p:column>
 			</p:dataTable>
-
+			<center>
+			<!-- para fazer a importação precesa-se de dois jar's o poi e itext -->
+			<h:commandLink   > 
+			<p:graphicImage value="/resources/images/pdf_32.png" style="margin-top:5px;"  />
+			<p:outputLabel value="Exportar para PDF" style="margin-left:5px; margin-top:5px;"/>
+				<p:dataExporter type="pdf" target="tbEvento" 
+				fileName="eventos"/>			
+			</h:commandLink>
+			</center>
 			<center>
 				<!-- Link para fazer Login -->
 				<ul class="nav nav-pills">
 
 					<li><p:commandLink value="Fazer Login - Caso seja Funcionario"
-							style="font-size:9px" rendered="#{login.existsLogin==false}"
+							style="font-size:12px; margin-top:5px:" rendered="#{login.existsLogin==false}"
 							action="/pages/login/login?faces-redirect=true" /></li>
 				</ul>
 			</center>
