@@ -152,7 +152,4 @@ public class Eventos {
 		this.diaSemana = diaSemana;
 	}
 	
-	
-	
-	
 }

@@ -8,8 +8,8 @@
 
 		<h:form id="formCadEvento">
 			<f:validateBean>
-				
-				<p:outputLabel value="Alterar Evento"/>
+
+				<p:outputLabel value="Alterar Evento" />
 				<p:separator />
 				<br />
 				<h:panelGrid>
@@ -18,119 +18,136 @@
 				</h:panelGrid>
 
 				<!-- DADOS -->
-				<h:panelGrid id="gridUser" columns="5" styleClass="panelgrid">
+				<h:panelGrid id="gridUser" columns="5" styleClass="panelgrid"
+					rendered="#{login.existsLogin}">
 
 					<!-- NOME -->
-					<p:outputLabel value="Nome: " />
-					<font color="red">*</font>
-					<p:inputText id="nome" value="#{atualizaEvento.eventoSelecionado.nome}" required="true"
-						requiredMessage="Campo Obrigatório" styleClass="letraGrande"  />
-					<p:message for="nome" />
-					
-					<!-- CURSO -->
-					<p:outputLabel value="Curso: " />
-					<font color="red">*</font>
-					<p:inputText id="curso" value="#{atualizaEvento.eventoSelecionado.curso}" required="true"
-						requiredMessage="Campo Obrigatório" 
-						styleClass="letraGrande"/>
-					<p:message for="curso" />
+					<p:outputLabel value=" Nome: " />
+				<font color="red">*</font>
+				<p:inputText id="nome"
+					value="#{atualizaEvento.eventoSelecionado.nome}" required="true"
+					requiredMessage="Campo Obrigatório" styleClass="letraGrande" />
+				<p:message for="nome" />
 
-					<!-- DATA INICIAL -->
-					<p:outputLabel value="Data Inicial: " />
-					<font color="red">*</font>
-				<p:calendar id="dataInicial" value="#{atualizaEvento.eventoSelecionado.dataInicial}" navigator="true" pattern="dd/MM/yyyy HH:mm"> 
-						<f:converter converterId="converterCalendar" />
-				</p:calendar>				
-					<p:message for="dataInicial" />
+				<!-- CURSO -->
+				<p:outputLabel value="Curso: " />
+				<font color="red">*</font>
+				<p:inputText id="curso"
+					value="#{atualizaEvento.eventoSelecionado.curso}" required="true"
+					requiredMessage="Campo Obrigatório" styleClass="letraGrande" />
+				<p:message for="curso" />
 
-					<!-- DATA FINAL -->
-					<p:outputLabel value="Data Final: " />
-					<font color="red">*</font>
-				<p:calendar id="dataFinal" value="#{atualizaEvento.eventoSelecionado.dataFinal}" locale="de" navigator="true" pattern="dd/MM/yyyy HH:mm"> 
-						<f:converter converterId="converterCalendar" />
+				<!-- DATA INICIAL -->
+				<p:outputLabel value="Data Inicial: " />
+				<font color="red">*</font>
+				<p:calendar id="dataInicial"
+					value="#{atualizaEvento.eventoSelecionado.dataInicial}"
+					navigator="true" pattern="dd/MM/yyyy HH:mm">
+					<f:converter converterId="converterCalendar" />
 				</p:calendar>
-					<p:message for="dataFinal" />
-					
-					<!-- DIA DA SEMANA -->
-					<p:outputLabel value="Dia da Semana: " />
-					<font color="red">*</font>
-					<p:selectOneMenu value="#{atualizaEvento.eventoSelecionado.diaSemana}" id="diaSemana" 
-					required="true" requiredMessage="Campo Obrigatório">
-						<f:selectItem itemLabel="DOMINGO" itemValue="DOMINGO" />
-						<f:selectItem itemLabel="SEGUNDA" itemValue="SEGUNDA" />
-						<f:selectItem itemLabel="TERCA" itemValue="TERCA" />
-						<f:selectItem itemLabel="QUARTA" itemValue="QUARTA" />
-						<f:selectItem itemLabel="QUINTA" itemValue="QUINTA" />
-						<f:selectItem itemLabel="SEXTA" itemValue="SEXTA" />
-						<f:selectItem itemLabel="SABADO" itemValue="SABADO" />
-					</p:selectOneMenu> 
-					<p:message for="diaSemana" />
+				<p:message for="dataInicial" />
 
-					<!-- PERIODICIDADE -->
-					<p:outputLabel value="Periodicidade: " />
-					<font color="red">*</font>
-					<p:selectOneMenu value="#{atualizaEvento.eventoSelecionado.periodicidade}"
-					 id="periodo">
-						<f:selectItem itemLabel="Diario" itemValue="DIARIO" />
-						<f:selectItem itemLabel="Semanal" itemValue="SEMANAL" />
-						<f:selectItem itemLabel="Diario" itemValue="MENSAL" />
-						<f:selectItem itemLabel="Bimestral" itemValue="BIMESTRAL" />
-						<f:selectItem itemLabel="Trimestral" itemValue="TRIMESTRAL" />
-						<f:selectItem itemLabel="Semestral" itemValue="SEMESTRAL" />
-						<f:selectItem itemLabel="Anual" itemValue="ANUAL" />
-					</p:selectOneMenu>
-					<p:message for="periodo" />
+				<!-- DATA FINAL -->
+				<p:outputLabel value="Data Final: " />
+				<font color="red">*</font>
+				<p:calendar id="dataFinal"
+					value="#{atualizaEvento.eventoSelecionado.dataFinal}" locale="de"
+					navigator="true" pattern="dd/MM/yyyy HH:mm">
+					<f:converter converterId="converterCalendar" />
+				</p:calendar>
+				<p:message for="dataFinal" />
 
-					<!-- RESPONSAVEL -->
-					<p:outputLabel value="Nome Responsavel: " />
-					<font color="red">*</font>
-					<p:inputText id="nomeResponsavel" value="#{atualizaEvento.eventoSelecionado.responsavel}"
-						required="true" requiredMessage="Campo Obrigatório" styleClass="letraGrande"/>
-					<p:message for="nomeResponsavel" />
+				<!-- DIA DA SEMANA -->
+				<p:outputLabel value="Dia da Semana: " />
+				<font color="red">*</font>
+				<p:selectOneMenu
+					value="#{atualizaEvento.eventoSelecionado.diaSemana}"
+					id="diaSemana" required="true" requiredMessage="Campo Obrigatório">
+					<f:selectItem itemLabel="DOMINGO" itemValue="DOMINGO" />
+					<f:selectItem itemLabel="SEGUNDA" itemValue="SEGUNDA" />
+					<f:selectItem itemLabel="TERCA" itemValue="TERCA" />
+					<f:selectItem itemLabel="QUARTA" itemValue="QUARTA" />
+					<f:selectItem itemLabel="QUINTA" itemValue="QUINTA" />
+					<f:selectItem itemLabel="SEXTA" itemValue="SEXTA" />
+					<f:selectItem itemLabel="SABADO" itemValue="SABADO" />
+				</p:selectOneMenu>
+				<p:message for="diaSemana" />
 
-					<!-- LOCAL -->
-					<p:outputLabel value="Local: " />
-					<font color="red">*</font>
-					<p:inputText id="local" value="#{atualizaEvento.eventoSelecionado.espaco}" 
-					styleClass="letraGrande"/>
-					<p:message for="local" />
+				<!-- PERIODICIDADE -->
+				<p:outputLabel value="Periodicidade: " />
+				<font color="red">*</font>
+				<p:selectOneMenu
+					value="#{atualizaEvento.eventoSelecionado.periodicidade}"
+					id="periodo">
+					<f:selectItem itemLabel="Diario" itemValue="DIARIO" />
+					<f:selectItem itemLabel="Semanal" itemValue="SEMANAL" />
+					<f:selectItem itemLabel="Diario" itemValue="MENSAL" />
+					<f:selectItem itemLabel="Bimestral" itemValue="BIMESTRAL" />
+					<f:selectItem itemLabel="Trimestral" itemValue="TRIMESTRAL" />
+					<f:selectItem itemLabel="Semestral" itemValue="SEMESTRAL" />
+					<f:selectItem itemLabel="Anual" itemValue="ANUAL" />
+				</p:selectOneMenu>
+				<p:message for="periodo" />
 
-					<!-- TURNO -->
-					<p:outputLabel value="Turno: " />
-					<font color="red">*</font>
-					<p:selectOneMenu value="#{atualizaEvento.eventoSelecionado.turno}" id="turno">
-						<f:selectItem itemLabel="Manha" itemValue="MANHA" />
-						<f:selectItem itemLabel="Tarde" itemValue="TARDE" />
-						<f:selectItem itemLabel="Noite" itemValue="NOITE" />
-					</p:selectOneMenu>
-					<p:message for="turno" />
-					
-					<!-- ATIVO -->
-					<p:outputLabel value="Ativo?: " />
-					<font color="red">*</font>
-					<p:selectBooleanButton id="ativo" onLabel="Sim" offLabel="Não"
+				<!-- RESPONSAVEL -->
+				<p:outputLabel value="Nome Responsavel: " />
+				<font color="red">*</font>
+				<p:inputText id="nomeResponsavel"
+					value="#{atualizaEvento.eventoSelecionado.responsavel}"
+					required="true" requiredMessage="Campo Obrigatório"
+					styleClass="letraGrande" />
+				<p:message for="nomeResponsavel" />
+
+				<!-- LOCAL -->
+				<p:outputLabel value="Local: " />
+				<font color="red">*</font>
+				<p:inputText id="local"
+					value="#{atualizaEvento.eventoSelecionado.espaco}"
+					styleClass="letraGrande" />
+				<p:message for="local" />
+
+				<!-- TURNO -->
+				<p:outputLabel value="Turno: " />
+				<font color="red">*</font>
+				<p:selectOneMenu value="#{atualizaEvento.eventoSelecionado.turno}"
+					id="turno">
+					<f:selectItem itemLabel="Manha" itemValue="MANHA" />
+					<f:selectItem itemLabel="Tarde" itemValue="TARDE" />
+					<f:selectItem itemLabel="Noite" itemValue="NOITE" />
+				</p:selectOneMenu>
+				<p:message for="turno" />
+
+				<!-- ATIVO -->
+				<p:outputLabel value="Ativo?: " />
+				<font color="red">*</font>
+				<p:selectBooleanButton id="ativo" onLabel="Sim" offLabel="Não"
 					value="#{atualizaEvento.eventoSelecionado.temAula}" />
-					<p:message for="ativo" />
-					
-					
+				<p:message for="ativo" />
+
+
 
 				</h:panelGrid>
 
 				<br />
 
 				<!-- PAINEL DOS BOTOES -->
-				<h:panelGrid columns="3" styleClass="panelgrid">
-									
-					<p:commandButton value="Salvar" action="#{atualizaEvento.atualizar}"
-						ajax="false" styleClass="btn btn-primary" />
-						
+				<h:panelGrid columns="3" styleClass="panelgrid"
+					rendered="#{login.existsLogin}">
+
+					<p:commandButton value="Salvar"
+						action="#{atualizaEvento.atualizar}" ajax="false"
+						styleClass="btn btn-primary" />
+
 					<p:commandButton value="Limpar" styleClass="btn btn-danger"
 						actionListener="#{atualizaEvento.limparDados}" update="@form"
 						type="reset" />
-						
+
 				</h:panelGrid>
+
+				<h:commandButton action="listEvento?faces-redirect=true"
+					value="Lista Eventos" />
 			</f:validateBean>
 		</h:form>
-		
+
 	</ui:define>
 </ui:composition>

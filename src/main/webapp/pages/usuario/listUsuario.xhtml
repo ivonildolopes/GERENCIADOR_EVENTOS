@@ -31,10 +31,9 @@
 					action="#{cadUsuario.preparaSalvar}" ajax="false" />
 			</h:panelGrid>
 			<br />
-			<p:dataTable id="tbUsuarios" var="usuario"
+			<p:dataTable id="tbUsuarios" var="usuario" rendered="#{login.existsLogin}"
 				style="font-size:10px"
 				value="#{listUsuario.usuarios}"
-				rendered="#{listUsuario.usuarios != null}"
 				emptyMessage="Nenhum resultado encontrado." resizableColumns="true"
 				rows="10" paginator="true"
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"

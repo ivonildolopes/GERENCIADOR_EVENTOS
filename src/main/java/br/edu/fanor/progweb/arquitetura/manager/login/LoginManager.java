@@ -34,6 +34,7 @@ public class LoginManager {
 	private Usuarios usuario = new Usuarios();
 	
 	private boolean existsLogin;
+	private String logado;
 
 	public String loggar() {
 		// criptrogafar a senha					
@@ -44,6 +45,7 @@ public class LoginManager {
 		if (usuario != null) {
 			seguranca.setUsuario(usuario);
 			existsLogin = true;
+			logado = usuario.getNome();
 			MessagesUtils.info("Bem vindo "+usuario.getNome());
 			return Navigation.SUCESSO;
 		} else {
@@ -56,7 +58,7 @@ public class LoginManager {
 	public String logout(){
 		//usuario = null;
 		existsLogin = false;
-		return "listEvento?faces-redirect=true";
+		return "/listEvento?faces-redirect=true"; 
 	}
 
 	/**
@@ -87,6 +89,14 @@ public class LoginManager {
 	 */
 	public void setExistsLogin(boolean existsLogin) {
 		this.existsLogin = existsLogin;
+	}
+
+	public String getLogado() {
+		return logado;
+	}
+
+	public void setLogado(String logado) {
+		this.logado = logado;
 	}
 
 }

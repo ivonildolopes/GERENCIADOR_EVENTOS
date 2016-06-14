@@ -31,7 +31,9 @@ public class EventoBO {
 			MessagesUtils.info("Evento salvo com sucesso");
 		}
 		else{
+			
 			MessagesUtils.error("A sala ja esta ocupada");
+			
 		}
 		
 //		try{

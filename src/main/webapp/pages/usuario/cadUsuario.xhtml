@@ -16,7 +16,8 @@
 						closable="true"/>
 				</h:panelGrid>
 				
-				<h:panelGrid id="gridUser" columns="4" styleClass="panelgrid">
+				<h:panelGrid id="gridUser" columns="4" styleClass="panelgrid" 
+				rendered="#{login.existsLogin}">
 					<p:outputLabel value="Nome: " />
 					<font color="red">*</font>
 					<p:inputText id="nome" value="#{cadUsuario.nome}" required="true"
@@ -46,7 +47,7 @@
 				
 				<br />
 				<!-- PAINEL DE BOTÕES -->
-				<h:panelGrid columns="3" styleClass="panelgrid">
+				<h:panelGrid columns="3" styleClass="panelgrid" rendered="#{login.existsLogin}">
 											
 					<p:commandButton value="Salvar" action="#{cadUsuario.salvar}"
 						ajax="false" styleClass="btn btn-primary"/>

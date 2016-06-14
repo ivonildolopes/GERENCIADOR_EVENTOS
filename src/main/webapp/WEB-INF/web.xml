@@ -47,7 +47,11 @@
 
 	<context-param>
 		<param-name>primefaces.THEME</param-name>
-		<param-value>cupertino</param-value>
+		<param-value>bootstrap</param-value>
 	</context-param>
+	
+	<session-config>
+		<session-timeout>1</session-timeout>
+	</session-config>
 
 </web-app>

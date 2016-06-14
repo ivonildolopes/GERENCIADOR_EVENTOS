@@ -55,6 +55,9 @@ public class ListEventoManager {
 		return Navigation.SUCESSO;
 	}
 
+	public String irPara(){
+		return "/listEvento/faces-redirect=true";
+	}
 	public String salvar(){
 		return null;
 	}

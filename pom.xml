@@ -228,6 +228,20 @@
 			<version>1.0.10</version>
 		</dependency>
 
+		<!-- Jar Email -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-email</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+
+
 	</dependencies>
 
 	<repositories>
